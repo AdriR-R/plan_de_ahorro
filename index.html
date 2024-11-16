@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./control_form.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/es.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Plan de Ahorro</title>
+</head>
+<body>
+    <h1>Programa plan de ahorro</h1>
+        
+        <form id="form1">
+            <h2>Datos de usuario:</h2>
+            <Label for="name">Nombre:</Label>
+            <input type="text" id="name" name="Nombre" required /><br />
+            <Label for="datBorn">Fecha de nacimiento</Label>
+            <input type="date" id="datBorn" name="Fecha_De_Nacimiento" required /><br />
+            <h3>Selecciona el Genero</h3>
+            <Label for="genMas">Masculino</Label>
+            <input type="radio" id="genMas" name="Genero" value="Masculino" required/><br />
+            <Label for="genFem">Femenino</Label>
+            <input type="radio" id="genFem" name="Genero" value="Femenino"/>
+            <h3>Datos de contacto:</h3>
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="Correo" placeholder="example@domain.com"><br />
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="Telefono" pattern="[0-9]{10}" required>
+            <br />
+            <h3>Datos de domicilio</h3>
+            <Label for="estate">Estado</Label>
+            <input type="text" id="estate" name="Estado" required maxlength="25" />
+            <Label for="city">Ciudad o Municipio</Label>
+            <input type="text" id="city" name="Ciudad" required maxlength="25" /><br />
+            <br />
+            <Label for="colony">Colonia:</Label>
+            <input type="text" id="colony" name="Colonia" required maxlength="35" />
+            <Label for="street">Calle:</Label>
+            <input type="text" id="street" name="Calle" required maxlength="35" /><br />
+            <br />
+            <label for="num">Número de casa:</label> 
+            <input type="number" id="num" name="Numero_De_Casa" required>
+            <label for="code">Codigo Postal:</label>
+            <input type="text" id="code" name="Codigo_Postal" pattern="\d{5}(-\d{4})?" placeholder="XXXXX o XXXXX-XXXX" required>
+            <br /> <br />
+            <input type="submit" value="Continuar" />
+        </form>
+        
+        <form id="form2" style>
+            <h2>Captura de Ingresos y Gastos Mensuales</h2>
+            <label for="in">Ingresos Mensuales: $</label> 
+            <input step="0.01" type="number" id="in" name="Ingresos" required min="7500"><br />
+            <h3>Agregar Gastos mensuales:</h3>
+            <label for="egN">Nombre del Gasto:</label> 
+            <input type="text" id="egN" name="Nombre_del_Egreso" maxlength="25">
+            <label for="egM">Monto del Gasto:</label> 
+            <input type="number" id="egM" name="Monto_del_Egreso">
+            <button id="addExp">Añadir</button><br />
+            <br />
+            <div id="scrollable_list">
+
+            </div> <br />
+            <label for="egH">Gastos Hormiga Mensuales:</label> 
+            <input type="number" id="egH" step="0.01" name="Gastos_Hormiga" value="0"><br />
+            <input type="submit" value="Continuar" />
+        </form>
+        
+        <form id="form3">
+            <h2>Capturar Informacion del Objetivo</h2>
+            <label for="objN">Nombre del Objetivo</label> 
+            <input type="text" id="objN" name="Nombre_del_Objetivo" maxlength="25" required><br />
+            <label for="objC">Costo del Objetivo</label> 
+            <input type="number" id="objC" name="Monto_del_Objetivo" required><br /><br />
+            <label for="dateObj">Ingresa el plazo del objetivo:</label>
+            <input type="date" id="dateObj" name="Plazo_del_objetivo" required><br /><br />
+            <input type="submit" value="Finalizar" />
+        </form>
+
+    <section id="secRes">
+        <div id="resForms">
+
+        </div>
+        <div id="cmpld">
+            <p>Para completar el plan debes ahorrar: $<span id="saveDr"></span> Diariamente o   $<span id="saveMt"></span> Mensualmente</p>
+        </div>
+        <div id="noCmpld">
+            <p>Con tu salario actual puedes cumplir el objetivo en la siguiente fecha: <span id="newDate"></span></p>
+            <p>Ahorrando el total de tu salario neto y eliminando los gastos hormiga</p>
+            <p>Cantidad a ahorrar (salario diario neto + gastos hormigas diarios): $<span id="newSlDr"></span> Diariamente, o   $<span id="newSlMt"></span> Mensualmente</p>
+        </div>
+        <div id="parcial">
+            <p>Para completar el plan es necesario eliminar la siguiente cantidad de tus gastos hormiga mensuales: <span id="diffAnt"></span></p>
+            <p>Cantidad a ahorrar: $<span id="saveDrPr"></span> Diariamente,    $<span id="saveMtPr"></span></p>
+        </div>
+    </section>
+</body>
+</html>

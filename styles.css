@@ -1,0 +1,10 @@
+#form2, #form3, #secRes, #cmpld, #noCmpld, #parcial {
+    display : none;
+}
+#scrollable_list {
+    max-height: 300px; 
+    max-width: 250px;
+    overflow-y: auto;  
+    border: 1px solid #ccc; 
+    padding: 10px;
+  }
