@@ -144,19 +144,25 @@ function showInfo(res, inc, salDrNet, amntObjt, dateObjt, saveDr, newDate, antDr
     resForms.insertAdjacentHTML('beforeend', `<p>Fecha Planteada: ${dateObjt.format('D [de] MMMM [de] YYYY')}</p>`)
     resForms.insertAdjacentHTML('beforeend', `<p>Resultado: ${res}</p>`)
     //segun el estado del resultado, se aciva la seccion correspondiente que contiene la redaccion del resultado
-    if (res == 'cumplido') {
-        document.getElementById('cmpld').style.display = 'block'
-        document.getElementById('saveDr').innerHTML = saveDr.toFixed(2)
-        document.getElementById('saveMt').innerHTML = (saveDr * 30).toFixed(2)
-    } else if(res == 'Parcial') {
-        document.getElementById('parcial').style.display = 'block'
-        document.getElementById('diffAnt').innerHTML = Math.abs((salDrNet - saveDr) * 30).toFixed(2)
-        document.getElementById('saveDrPr').innerHTML = saveDr.toFixed(2)
-        document.getElementById('saveMtPr').innerHTML = (saveDr * 30).toFixed(2)
-    }else if(res == 'no cumplido'){
-        document.getElementById('noCmpld').style.display = 'block'
-        document.getElementById('newDate').innerHTML = newDate.format('D [de] MMMM [de] YYYY')
-        document.getElementById('newSlDr').innerHTML = (salDrNet + antDr).toFixed(2)
-        document.getElementById('newSlMt').innerHTML = ((salDrNet + antDr) * 30).toFixed(2)
+    switch (res) {
+        case 'cumplido':
+            document.getElementById('cmpld').style.display = 'block'
+            document.getElementById('saveDr').innerHTML = saveDr.toFixed(2)
+            document.getElementById('saveMt').innerHTML = (saveDr * 30).toFixed(2)
+            break;
+        case 'parcial':
+            document.getElementById('parcial').style.display = 'block'
+            document.getElementById('diffAnt').innerHTML = Math.abs((salDrNet - saveDr) * 30).toFixed(2)
+            document.getElementById('saveDrPr').innerHTML = saveDr.toFixed(2)
+            document.getElementById('saveMtPr').innerHTML = (saveDr * 30).toFixed(2)
+            break;
+        case 'no cumplido':
+            document.getElementById('noCmpld').style.display = 'block'
+            document.getElementById('newDate').innerHTML = newDate.format('D [de] MMMM [de] YYYY')
+            document.getElementById('newSlDr').innerHTML = (salDrNet + antDr).toFixed(2)
+            document.getElementById('newSlMt').innerHTML = ((salDrNet + antDr) * 30).toFixed(2)
+            break;
+        default:
+            break;
     }
     }
